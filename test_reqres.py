@@ -13,7 +13,7 @@ def test_requested_page_number():
     assert response.json()["page"] == page
 
 
-def test_requested_page_number_schema_validation():
+def test_get_requested_page_number_schema_validation():
     schema = load_json_schema("get_page_number.json")
 
     response = reqres_session.get("/api/users")
@@ -29,7 +29,7 @@ def test_users_list_default_length():
     assert len(response.json()["data"]) == default_users_count
 
 
-def test_user_list_schema_validation():
+def test_get_user_list_schema_validation():
     schema = load_json_schema("get_user_list.json")
 
     response = reqres_session.get("/api/users")
@@ -44,7 +44,7 @@ def test_single_user_not_found():
     assert response.text == "{}"
 
 
-def test_single_user_not_found_schema_validation():
+def test_get_single_user_not_found_schema_validation():
     schema = load_json_schema("get_single_user_not_found.json")
 
     response = reqres_session.get("/api/users/23")
@@ -62,7 +62,7 @@ def test_create_user():
     assert response.json()["name"] == name
 
 
-def test_create_user_schema_validation():
+def test_post_create_user_schema_validation():
     name = "jane"
     job = "job"
     schema = load_json_schema("post_create_user.json")
@@ -138,7 +138,7 @@ def test_post_user_register_unsuccessful_schema_validation():
     validate(instance=response.json(), schema=schema)
 
 
-def test_post_login_successful():
+def test_login_successful():
     email = "eve.holt@reqres.in"
     password = "pistol"
 
@@ -159,7 +159,7 @@ def test_post_login_successful_schema_validation():
     validate(instance=response.json(), schema=schema)
 
 
-def test_get_list_resources():
+def test_list_resources():
     response = reqres_session.get("/api/unknown")
 
     assert response.status_code == 200
