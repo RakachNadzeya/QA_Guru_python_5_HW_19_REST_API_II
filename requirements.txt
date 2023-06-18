@@ -1,0 +1,6 @@
+requests~=2.31.0
+pytest
+allure-pytest
+curlify~=2.2.1
+
+jsonschema~=4.17.3
